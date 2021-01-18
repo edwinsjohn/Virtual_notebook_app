@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
-import 'package:notebook/auth/nep.dart';
+// import 'package:notebook/auth/nep.dart';
 import 'package:notebook/page3.dart';
 import 'package:intl/intl.dart';
 import 'package:notebook/model.dart';
@@ -9,8 +9,8 @@ import 'package:notebook/page1.dart';
 import 'package:notebook/canvas.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:notebook/auth/start.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:provider/provider.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:provider/provider.dart';
 // import 'package:provider/provider.dart';
 // import 'package:notebook/auth/profiledatabase.dart';
 // import 'package:firebase_core/firebase_core.dart';

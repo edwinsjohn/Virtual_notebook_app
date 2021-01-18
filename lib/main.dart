@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notebook/auth/start.dart';
+// import 'package:notebook/auth/start.dart';
 import 'package:firebase_core/firebase_core.dart';
 // import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 // import 'package:notebook/page3.dart';

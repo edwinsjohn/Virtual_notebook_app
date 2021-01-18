@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'state_management.dart';
 import 'text_field.dart';
 import 'toolbar.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
+// import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class TextEditor extends StatefulWidget {
   TextEditor({Key key}) : super(key: key);

@@ -64,16 +64,19 @@ class _Settings1State extends State<Settings1> {
                     CircleAvatar(
                       backgroundImage: AssetImage("images/images.jpg"),
                       radius: 60,
+                      
                     )
                   ],
                 ),
               ),
             ),
 
+          
+
             ListTile(
               title: Text(
                 "Notification",
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 16,),
               ),
               trailing: Icon(Icons.keyboard_arrow_right,
                   color: Colors.black, size: 30.0),
