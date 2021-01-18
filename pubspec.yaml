@@ -25,8 +25,9 @@ dependencies:
     sdk: flutter
   bubble_bottom_bar: ^1.2.0
   http: ^0.12.2
-  firebase_database: ^4.4.0
-  firebase_auth: ^0.18.3+1
+  firebase_database: ^6.0.0
+  firebase_auth: ^0.20.0+1
+  cloud_firestore: ^0.16.0
   flutter_plugin_pdf_viewer: ^1.0.7
   flutter_signin_button: ^1.1.0
   intl: ^0.16.1
@@ -35,8 +36,8 @@ dependencies:
   provider: ^4.1.3
   keyboard_visibility: ^0.5.6
   flutter_typeahead: ^1.8.1
-  firebase_core: ^0.5.2+1
-  firebase_storage: ^5.2.0
+  firebase_core: ^0.7.0
+  firebase_storage: ^7.0.0
   file_picker: 1.4.3+1
 
   # The following adds the Cupertino Icons font to your application.
@@ -60,7 +61,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/eldho.jpg
+    - images/images.jpg
     - images/edu.jpg
     - images/signup.jpg
     - images/samp.jpeg

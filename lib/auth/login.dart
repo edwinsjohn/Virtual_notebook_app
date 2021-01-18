@@ -17,8 +17,8 @@ class _LoginState extends State<Login> {
   String _email, _password;
 
   checkAuthentification() async {
-    _auth.onAuthStateChanged.listen((user) {
-      if (user != null) {
+    _auth.authStateChanges().listen((userCredential) {
+      if (userCredential != null) {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => MyHomePage()));
       }
@@ -36,11 +36,15 @@ class _LoginState extends State<Login> {
       _formKey.currentState.save();
 
       try {
-        FirebaseUser user = (await _auth.signInWithEmailAndPassword(
-                email: _email, password: _password))
-            .user;
-      } catch (e) {
-        showError(e.errormessage);
+        UserCredential userCredential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: _email, password: _password);
+        checkAuthentification();
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          print('No user found for that email.');
+        } else if (e.code == 'wrong-password') {
+          print('Wrong password provided for that user.');
+        }
       }
     }
   }
@@ -89,7 +93,9 @@ class _LoginState extends State<Login> {
                     Container(
                       child: TextFormField(
                           validator: (input) {
-                            if (input.isEmpty) return 'Enter Email';
+                            if (input.isEmpty) {
+                              return 'Enter Email';
+                            }
                           },
                           decoration: InputDecoration(
                               labelText: 'Email',
@@ -99,8 +105,9 @@ class _LoginState extends State<Login> {
                     Container(
                       child: TextFormField(
                           validator: (input) {
-                            if (input.length < 6)
+                            if (input.length < 6) {
                               return 'Provide Minimum 6 Character';
+                            }
                           },
                           decoration: InputDecoration(
                             labelText: 'Password',

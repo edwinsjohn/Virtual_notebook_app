@@ -37,7 +37,7 @@ class _FilesState extends State<Files> {
             context, MaterialPageRoute(builder: (context) => Recent()));
       } else if (index == 3) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Settings()));
+            context, MaterialPageRoute(builder: (context) => Settings1()));
       }
     });
   }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:notebook/auth/profiledatabase.dart';
 import 'package:notebook/page0.dart';
-import 'package:notebook/page1.dart';
-import 'package:notebook/page3.dart';
+// import 'package:notebook/page1.dart';
+// import 'package:notebook/page3.dart';
 
 Color mycolor = Color(0xfff373F51);
 
@@ -18,8 +19,9 @@ class _SignUpState extends State<SignUp> {
   String _name, _email, _password;
 
   checkAuthentication() async {
-    _auth.onAuthStateChanged.listen((user) async {
+    _auth.authStateChanges().listen((user) async {
       if (user != null) {
+        print("notnull");
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => MyHomePage()));
       }
@@ -37,13 +39,17 @@ class _SignUpState extends State<SignUp> {
       _formKey.currentState.save();
 
       try {
-        FirebaseUser user = (await _auth.createUserWithEmailAndPassword(
-                email: _email, password: _password))
-            .user;
-        if (user != null) {
-          await FirebaseAuth.instance.currentUser
-              .updateProfile(displayName: user.displayName);
-        }
+        UserCredential userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: _email, password: _password);
+
+        await DatabaseService(uid: userCredential.user.uid)
+            .updateUserData(_name, '5');
+        // if (userCredential != null) {
+        //   await FirebaseAuth.instance.currentUser.updateProfile(
+        //     displayName: _name,
+        //     photoURL: _email,
+        //   );
+        // }
       } catch (e) {
         showError(e.errormessage);
       }
@@ -90,7 +96,9 @@ class _SignUpState extends State<SignUp> {
                     Container(
                       child: TextFormField(
                           validator: (input) {
-                            if (input.isEmpty) return 'Enter Name';
+                            if (input.isEmpty) {
+                              return 'Enter Name';
+                            }
                           },
                           decoration: InputDecoration(
                             labelText: 'Name',
@@ -101,7 +109,9 @@ class _SignUpState extends State<SignUp> {
                     Container(
                       child: TextFormField(
                           validator: (input) {
-                            if (input.isEmpty) return 'Enter Email';
+                            if (input.isEmpty) {
+                              return 'Enter Email';
+                            }
                           },
                           decoration: InputDecoration(
                               labelText: 'Email',
@@ -111,8 +121,9 @@ class _SignUpState extends State<SignUp> {
                     Container(
                       child: TextFormField(
                           validator: (input) {
-                            if (input.length < 6)
+                            if (input.length < 6) {
                               return 'Provide Minimum 6 Character';
+                            }
                           },
                           decoration: InputDecoration(
                             labelText: 'Password',

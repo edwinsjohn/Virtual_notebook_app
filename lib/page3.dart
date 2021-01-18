@@ -1,18 +1,25 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
+import 'package:notebook/auth/start.dart';
 import 'package:notebook/page1.dart';
 import 'package:notebook/page2.dart';
 import 'package:notebook/page0.dart';
 import 'package:notebook/canvas.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+Future<void> _signOut() async {
+  await FirebaseAuth.instance.signOut();
+}
 
 Color mycolor = Color(0xfff373F51);
 
-class Settings extends StatefulWidget {
+class Settings1 extends StatefulWidget {
   @override
-  _SettingsState createState() => _SettingsState();
+  _Settings1State createState() => _Settings1State();
 }
 
-class _SettingsState extends State<Settings> {
+class _Settings1State extends State<Settings1> {
   var currentIndex;
 
   @override
@@ -55,7 +62,7 @@ class _SettingsState extends State<Settings> {
                 child: Stack(
                   children: [
                     CircleAvatar(
-                      backgroundImage: AssetImage("images/eldho.jpg"),
+                      backgroundImage: AssetImage("images/images.jpg"),
                       radius: 60,
                     )
                   ],
@@ -101,12 +108,15 @@ class _SettingsState extends State<Settings> {
             //tile3
             ListTile(
               title: Text(
-                "About",
-                style: TextStyle(fontSize: 16),
+                "LOGOUT",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               trailing: Icon(Icons.keyboard_arrow_right,
                   color: Colors.black, size: 30.0),
               dense: true,
+              onTap: () {
+                _signOut();
+              },
             ),
           ],
         ),

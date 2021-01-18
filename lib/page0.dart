@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
+import 'package:notebook/auth/nep.dart';
 import 'package:notebook/page3.dart';
 import 'package:intl/intl.dart';
 import 'package:notebook/model.dart';
@@ -8,8 +9,11 @@ import 'package:notebook/page1.dart';
 import 'package:notebook/canvas.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:notebook/auth/start.dart';
-import 'package:notebook/auth/signup.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
+// import 'package:notebook/auth/profiledatabase.dart';
+// import 'package:firebase_core/firebase_core.dart';
 
 Color mycolor = Color(0xfff373F51);
 
@@ -83,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage>
             context, MaterialPageRoute(builder: (context) => Files()));
       } else if (index == 3) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Settings()));
+            context, MaterialPageRoute(builder: (context) => Settings1()));
       }
     });
   }
@@ -153,6 +157,9 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
+    // dynamic userproname =
+    //     Provider.of<DatabaseService>(context).getCurrentUserData();
+
     /// SIZE OF DEVICE
 
     return SafeArea(
@@ -170,18 +177,18 @@ class _MyHomePageState extends State<MyHomePage>
                     width: 60.0,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('images/eldho.jpg'),
+                        image: AssetImage('images/images.jpg'),
                       ),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   ),
                   SizedBox(width: 20.0),
                   Text(
-                    '${_user.displayName}',
+                    "VIRTUAL NOTEBOOK",
                     style: TextStyle(
-                      fontSize: 28.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: .2),
                   ),
                 ],
               ),

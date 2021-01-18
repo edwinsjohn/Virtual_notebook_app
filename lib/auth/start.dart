@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:notebook/auth/login.dart';
-import 'package:notebook/page0.dart';
 import 'SignUp.dart';
-// import 'SignUp.dart';
 
+// import 'package:notebook/page0.dart';
 Color mycolor = Color(0xfff373F51);
 
 class Start extends StatefulWidget {
